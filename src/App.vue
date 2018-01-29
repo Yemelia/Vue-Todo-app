@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <todo-list v-bind:todos="todos"></todo-list>
   </div>
 </template>
@@ -9,7 +8,7 @@
 import TodoList from './components/TodoList';
 export default {
   name: 'app',
-components: {
+  components: {
     TodoList,
   },
   // data function avails data to the template
