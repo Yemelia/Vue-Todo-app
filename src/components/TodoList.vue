@@ -16,10 +16,18 @@ export default {
     Todo,
   },
   methods: {
+    
     deleteTodo(todo) {
       const todoIndex = this.todos.indexOf(todo);
-      this.todos.splice(todoIndex, 1);
+
+      this.$http.post('/api/delete-todo', {todoIndex})
+      .then(response => {
+        this.todos = response.body
+      }, response => {
+        console.log('Error');
+      });
     },
+
     completeTodo(todo) {
       const todoIndex = this.todos.indexOf(todo);
       this.todos[todoIndex].done = true;

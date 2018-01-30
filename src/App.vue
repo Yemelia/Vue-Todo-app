@@ -17,28 +17,25 @@ export default {
   },
   data() {
     return {
-      todos: [{
-        title: 'Todo A',
-        project: 'Project A',
-        done: false,
-      }, {
-        title: 'Todo B',
-        project: 'Project B',
-        done: true,
-      }, {
-        title: 'Todo C',
-        project: 'Project C',
-        done: false,
-      }, {
-        title: 'Todo D',
-        project: 'Project D',
-        done: false,
-      }],
+      todos: []
     };
+  },
+  mounted(){
+    this.$http.get('/api/todos')
+    .then(response => {
+      this.todos = response.body;
+    }, response => {
+        console.log(response);
+    });
   },
   methods:{
     addTodo(todo){
-      this.todos.push(todo);
+      this.$http.put('/api/add-todo', todo)
+      .then(response => {
+        this.todos = response.body
+      }, response => {
+        console.log(response);
+      });
     }
   }
 }
