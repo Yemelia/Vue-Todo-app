@@ -32,6 +32,9 @@
           <button class='ui basic blue button' v-on:click="hideForm">
             Close X
           </button>
+          <button class='ui basic green button' v-on:click="editTodo(todo)">
+            Save
+          </button>
         </div>
       </div>
     </div>
@@ -65,6 +68,11 @@
         completeTodo(todo) {
           this.$emit('complete-todo', todo);
         },
+      
+        editTodo(todo){
+          this.$emit('edit-todo', todo);
+          this.isEditing = false;
+        }
     },
   };
 </script>
