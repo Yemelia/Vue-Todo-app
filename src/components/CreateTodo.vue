@@ -45,19 +45,21 @@ export default {
         this.isCreating = false;
     },
     sendForm() {
-        if (this.titleText.length > 0 && this.projectText.length > 0) {
-            const title = this.titleText;
-            const project = this.projectText;
+      if (this.titleText.length > 0 && this.projectText.length > 0) {
+          const title = this.titleText;
+          const project = this.projectText;
 
-            this.$emit('add-todo', {
-                title,
-                project,
-                done: false,
-            });
-            this.newTodoText = '';
-        }
-        this.isCreating = false;
-        },
+          this.$emit('add-todo', {
+              title,
+              project,
+              done: false,
+          });
+      }
+      this.isCreating = false;
+
+      this.titleText = '';
+      this.projectText = '';
     },
+  },
 };
 </script>
